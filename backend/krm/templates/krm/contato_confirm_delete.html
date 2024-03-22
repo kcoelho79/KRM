@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+{% block title %}Confirmar Exclusão{% endblock %}
+
+{% block content %}
+    <h1>Confirmar Exclusão</h1>
+    <p>Você tem certeza que deseja excluir o contato "{{ contato.nome }}"?</p>
+    <form action="{% url 'contato-delete' contato.pk %}" method="post">
+        {% csrf_token %}
+        <button type="submit">Confirmar Exclusão</button>
+    </form>
+    <a href="{% url 'contato-detail' contato.pk %}">Cancelar</a>
+{% endblock %}

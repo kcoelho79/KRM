@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block title %}Detalhes do Contato{% endblock %}
+
+{% block content %}
+    <h1>Detalhes do Contato</h1>
+    <p><strong>Nome:</strong> {{ contato.nome }}</p>
+    <p><strong>Telefone:</strong> {{ contato.telefone }}</p>
+    <p><strong>Origem:</strong> {{ contato.get_origem_display }}</p>
+    <p><strong>Email:</strong> {{ contato.email }}</p>
+    <a href="{% url 'contato-update' contato.pk %}">Editar</a>
+    <form action="{% url 'contato-delete' contato.pk %}" method="post">
+        {% csrf_token %}
+        <button type="submit">Excluir</button>
+    </form>
+    <a href="{% url 'contato-list' %}">Voltar para a lista</a>
+{% endblock %}

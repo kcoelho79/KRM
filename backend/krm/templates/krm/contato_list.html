@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block title %}Lista de Contatos{% endblock %}
+
+{% block content %}
+    <h1>Lista de Contatos</h1>
+    <ul>
+        {% for contato in contatos %}
+            <li><a href="{% url 'contato-detail' contato.pk %}">{{ contato.nome }}</a></li>
+        {% empty %}
+            <li>Nenhum contato encontrado.</li>
+        {% endfor %}
+    </ul>
+    <a href="{% url 'contato-create' %}">Adicionar novo contato</a>
+{% endblock %}

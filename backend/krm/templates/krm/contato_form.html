@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+
+{% block title %}{% if contato %}Atualizar Contato{% else %}Adicionar Contato{% endif %}{% endblock %}
+
+{% block content %}
+    <h1>{% if contato %}Atualizar Contato{% else %}Adicionar Contato{% endif %}</h1>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">{% if contato %}Atualizar{% else %}Adicionar{% endif %}</button>
+    </form>
+{% endblock %}
