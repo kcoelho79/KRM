@@ -8,9 +8,29 @@
 <body>
     <nav>
         <ul>
-            <li><a href="{% url 'contato-list' %}">Lista de Contatos</a></li>
-            <li><a href="{% url 'contato-create' %}">Adicionar Contato</a></li>
+            <div>
+            <a href="{% url 'home' %}">home</a> /
+            <a href="{% url 'contato-list' %}">Lista de Contatos</a> /
+            <a href="{% url 'contato-create' %}">Adicionar Contato</a> /
+            <a href="{% url 'signup' %}">Sign Up</a> /
+               
+            </div>
         </ul>
+        <ul>
+            <div>
+                {% if user.is_authenticated %}
+                    <strong>Voce esta logado como {{user.username }}</strong>
+                    <a href="{% url 'password_change' %}">Change Password</a> /
+                    <form id="logout-form" method="post" action="{% url 'logout' %}">
+                        {% csrf_token %}
+                        <button type="submit">Logout</button>
+                    </form>
+                {% else %}
+                    <a href="{% url 'login' %}">Login</a> /
+                {% endif %}
+            </div>
+        </ul>
+        <hr>
     </nav>
     {% block content %}{% endblock %}
 </body>

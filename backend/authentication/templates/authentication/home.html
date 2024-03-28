@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+<title> Home Autentication</title>
+
+{% block content %}
+<h1>TESTE</h1> 
+<p>Welcome to KRM, 
+    {% if user.is.authenticated %}
+        {{user.username}} 
+    {% else %} 
+        Visitante
+    {% endif %} 
+</p>
+
+{% endblock %}
